@@ -1,0 +1,65 @@
+---
+alwaysApply: true
+---
+
+You are a senior software developer who is well-versed in Clean Architecture and Domain-Driven Design, and can implement well-structured applications that scale and are easily maintained.
+
+## Definitions
+- Domain is a use case of application
+- Just because a domain exist on backend, doesn't mean it is needed on frontend. This applies both ways.
+- A frontend domain action is a action that is performed on the domiain (view, delete, create, update...)
+
+## Project Architecture
+
+```
+src/
+├── api/                                    # Backend
+│   ├── domains/                            # Backend domains
+│   │   ├── shared/                         # Domain for shared/common backend code
+│   │   │   ├── utils/                      # Shares/common utils and helpers
+│   │   │   ├── types/                      # Shares/common types, enums and interfaces
+│   │   ├── {domain-name}/                  # Specific backend domain code
+│   │   │   ├── utils/                      # Specific backend domain utils and helpers
+│   │   │   ├── types/                      # Specific backend domain types, enums and interfaces
+│   │   │   ├── entrypoints/                # Specific backend domain endpoints
+│   │   │   ├── services/                   # Specific backend domain busined logic code
+│   │   │   ├── repositories/               # Specific backend domain call for outside services (db, cache, api)
+│   ├── router.ts                           # Backend router
+│   ├── index.ts                            # Backend entrypoint
+├── app/                                    # Frontend
+│   ├── domains/                            # Frontend domains
+│   │   ├── shared/                         # Domain for shared/common frontend code
+│   │   │   ├── utils/                      # Shares/common utils and helpers
+│   │   │   ├── types/                      # Shares/common types, enums and interfaces
+│   │   │   ├── components/                 # Shares/common components
+│   │   │   ├── hooks/                      # Shares/common hooks
+│   │   │   ├── providers/                  # Shares/common providers
+│   │   │   ├── contexts/                   # Shares/common contexts
+│   │   ├── {domain-name}/                  # Specific frontend domain code
+│   │   │   ├── utils/                      # Specific frontend domain utils and helpers
+│   │   │   ├── types/                      # Specific frontend domain types, enums and interfaces
+│   │   │   ├── components/                 # Specific frontend domain components
+│   │   │   ├── hooks/                      # Specific frontend domain hooks
+│   │   │   ├── providers/                  # Specific frontend domain providers
+│   │   │   ├── contexts/                   # Specific frontend domain contexts
+│   │   │   ├── actions/                    # Domain actions
+│   │   │   │   ├── {action-name}/          # Specific frontend domain action code
+│   │   │   │   │   ├── utils/              # Specific frontend domain action utils and helpers
+│   │   │   │   │   ├── types/              # Specific frontend domain action types, enums and interfaces
+│   │   │   │   │   ├── components/         # Specific frontend domain action components
+│   │   │   │   │   ├── hooks/              # Specific frontend domain action hooks
+│   │   │   │   │   ├── providers/          # Specific frontend domain action providers
+│   │   │   │   │   ├── contexts/           # Specific frontend domain action contexts
+│   │   │   │   │   ├── pages/              # Specific frontend domain action pages
+│   ├── routes/                             # Frontend routes using file-based routing
+│   ├── index.ts                            # Frontend entrypoint
+├── server/                                 # Server-side and client-side configuration and entrypoints
+├── types/                                  # Types, enums and interfaces that are common/shared between backend and frontend
+```
+
+## Routes configuration
+- /api/** is a route reserved for the backend implementation
+- there is only two ways to access the backend routes:
+  - via frontend
+  - via header named x-backend-auth that expect boolean set to true
+- all other routes should be used by the frontend
