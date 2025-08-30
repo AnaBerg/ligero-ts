@@ -4,19 +4,20 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "bun run server:dev",
-    "dev:vite": "vite",
-    "server:dev": "NODE_ENV=development bun --hot src/server/main.ts",
-    "build": "vite build",
+    "dev": "NODE_ENV=development bun --hot src/server/main.ts",
     "lint": "eslint ."
   },
   "dependencies": {
+    "@fastify/middie": "9.0.3",
     "@nestjs/platform-fastify": "11.1.6",
+    "@tailwindcss/vite": "4.1.12",
     "@tanstack/react-router": "1.131.28",
     "@tanstack/react-router-devtools": "1.131.28",
     "fastify": "5.5.0",
+    "install": "0.13.0",
     "react": "19.1.1",
-    "react-dom": "19.1.1"
+    "react-dom": "19.1.1",
+    "tailwindcss": "4.1.12"
   },
   "devDependencies": {
     "@eslint/js": "9.33.0",
