@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { BackendModule } from '@api/backend.module.ts';
-import { SsrModule } from './ssr/ssr.module.ts';
+import { BackendModule } from '@/api/backend.module';
+import { SsrModule } from './ssr/ssr.module';
 
 @Module({
   imports: [BackendModule, SsrModule],

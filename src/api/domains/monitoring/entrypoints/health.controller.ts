@@ -1,5 +1,5 @@
 import { Controller, Get, UseGuards } from '@nestjs/common';
-import { ApiAccessGuard } from '../../shared/utils/api-access.guard.ts';
+import { ApiAccessGuard } from '../../shared/utils/api-access.guard';
 
 @Controller('api')
 export class MonitoringController {
