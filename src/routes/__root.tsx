@@ -1,8 +1,9 @@
-import { createRootRoute } from '@tanstack/react-router';
+import { createRootRouteWithContext } from '@tanstack/react-router';
+import type { RouterContext } from '@/server/router';
 
 import { Layout } from '@/app/domains/shared/containers';
 
-export const Route = createRootRoute({
+export const Route = createRootRouteWithContext<RouterContext>()({
   component: Layout,
   head: () => ({
     links: [

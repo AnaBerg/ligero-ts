@@ -42,6 +42,7 @@ src/
 │   │   │   ├── hooks/                      # Specific frontend domain hooks
 │   │   │   ├── providers/                  # Specific frontend domain providers
 │   │   │   ├── contexts/                   # Specific frontend domain contexts
+│   │   │   ├── requests/                   # Specific frontend domain methods to configure async calls
 │   │   │   ├── actions/                    # Domain actions
 │   │   │   │   ├── {action-name}/          # Specific frontend domain action code
 │   │   │   │   │   ├── utils/              # Specific frontend domain action utils and helpers

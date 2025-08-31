@@ -1,8 +1,13 @@
 import { createRouter as createTanstackRouter } from '@tanstack/react-router';
+import type { QueryClient } from '@tanstack/react-query';
 import { routeTree } from '@/routeTree.gen';
 
-export function createRouter() {
-  return createTanstackRouter({ routeTree });
+export type RouterContext = {
+  queryClient: QueryClient;
+};
+
+export function createRouter(options?: { context?: RouterContext }) {
+  return createTanstackRouter({ routeTree, context: options?.context });
 }
 
 declare module '@tanstack/react-router' {

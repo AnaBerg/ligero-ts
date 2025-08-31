@@ -1,7 +1,14 @@
 import { hydrateRoot } from 'react-dom/client';
 import { RouterClient } from '@tanstack/react-router/ssr/client';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { createRouter } from './router';
 
-const router = createRouter();
+const queryClient = new QueryClient();
+const router = createRouter({ context: { queryClient } });
 
-hydrateRoot(document, <RouterClient router={router} />);
+hydrateRoot(
+  document,
+  <QueryClientProvider client={queryClient}>
+    <RouterClient router={router} />
+  </QueryClientProvider>
+);
